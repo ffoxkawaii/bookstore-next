@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+    @apply
+    opacity-100
+    visible
+    translate-y-0
+    transition-all
+    duration-[250ms]
+    ease-in-out
+}
+
+.inactive {
+    @apply
+    opacity-0
+    invisible
+    -translate-y-[30px]
+    transition-all
+    duration-[250ms]
+    ease-in-out
+}
