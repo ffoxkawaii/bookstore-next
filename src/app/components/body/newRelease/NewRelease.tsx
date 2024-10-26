@@ -18,7 +18,7 @@ const NewRelease = () => {
   return (
     <div
       className={`flex flex-col
-    lg:flex-row-reverse gap-x-[100px]`}
+    lg:flex-row-reverse lg:gap-x-[100px]`}
     >
       <div>
         <Image

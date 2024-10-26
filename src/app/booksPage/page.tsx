@@ -25,7 +25,7 @@ export default function BookPage() {
         <p className={`${ebGaramond.className}
         font-bold text-[40px] my-[50px]`}>Sách</p>
       </div>
-      <div className={`flex flex-col 2xl:flex-row 2xl:gap-x-[100px]`}>
+      <div className={`flex flex-col xl:flex-row xl:gap-x-[100px]`}>
         <div className={`flex flex-col md:flex-row md:gap-x-[100px]`}>
           <BookPlaceHolder 
           image="/books/tat-den.webp"
@@ -60,7 +60,7 @@ export default function BookPage() {
           />
         </div>
       </div>
-      <div className={`flex flex-col 2xl:flex-row 2xl:gap-x-[100px]`}>
+      <div className={`flex flex-col xl:flex-row xl:gap-x-[100px]`}>
         <div className={`flex flex-col md:flex-row md:gap-x-[100px]`}>
           <BookPlaceHolder 
           image="/books/so-do.webp"
@@ -96,7 +96,7 @@ export default function BookPage() {
           />
         </div>
       </div>
-      <div className={`flex flex-col 2xl:flex-row 2xl:gap-x-[100px]`}>
+      <div className={`flex flex-col xl:flex-row xl:gap-x-[100px]`}>
         <div className={`flex flex-col md:flex-row md:gap-x-[100px]`}>
           <BookPlaceHolder 
           image="/home/cho-toi-xin-mot-ve-di-tuoi-tho.jpg"

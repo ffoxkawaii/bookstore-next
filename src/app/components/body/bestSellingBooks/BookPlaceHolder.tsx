@@ -31,7 +31,10 @@ const BookPlaceHolder = ({
 }: BookPlaceHolder) => {
   return (
     <div>
-      <div className={`mt-[50px]`}>
+      <div className={`mt-[50px] hover:before:bg-black/30 hover:before:backdrop-blur-md cursor-pointer
+      before:contents-[''] before:absolute relative  before:inset-0 before:rounded-xl before:transition-all
+      before:duration-[500ms] before:ease-in-out
+      `}>
         <Image
           src={image}
           width={250}
@@ -39,6 +42,26 @@ const BookPlaceHolder = ({
           alt={`Bìa sách ${bookName}`}
           className={`rounded-xl`}
         ></Image>
+
+        <div className={
+        `w-full h-full bg-black/30 absolute top-0 rounded-lg
+        flex flex-col justify-center items-center ${openSans.className} text-[16px]
+        space-y-[30px] opacity-0 hover:opacity-100 transition-all duration-100
+        ease-in-out`
+        }>
+          <p className={
+          `w-[100px] h-[50px] flex justify-center items-center border-[1px] border-[#4d3bc6]
+          rounded-lg font-normal text-white hover:scale-[1.2] hover:font-semibold
+          transition-all duration-300 ease-in-out hover:bg-[#4d3bc6] hover:border-none
+          `
+          }>Mua ngay</p>
+          <p className={
+          `w-[170px] h-[50px] flex justify-center items-center border-[1px] border-[#4d3bc6]
+          rounded-lg font-normal text-white hover:scale-[1.2] hover:font-semibold
+          transition-all duration-300 ease-in-out hover:bg-[#4d3bc6] hover:border-none
+          `
+          }>Thêm vào giỏ hàng</p>
+        </div>
       </div>
       <div
         className={`${openSans.className}
