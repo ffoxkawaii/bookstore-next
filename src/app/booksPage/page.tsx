@@ -4,7 +4,7 @@ import { Open_Sans } from "next/font/google";
 import BookPlaceHolder from "../components/body/bestSellingBooks/BookPlaceHolder";
 
 export const metadata: Metadata = {
-  title: "Bookstore | Sách",
+  title: "Bookstore | Trang nổi bật",
   description: "Trang bán sách"
 }
 
@@ -30,7 +30,7 @@ export default function BookPage() {
           <BookPlaceHolder 
           image="/books/tat-den.webp"
           type="Tiểu thuyết"
-          bookName="Tắt đèn"
+          bookName="Tắt đèn" 
           author="Ngô Tất Tố"
           price="75.000 VNĐ"
           />

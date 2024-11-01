@@ -1,4 +1,4 @@
-import Adwards from "./components/body/adWards/Adwards";
+// import Adwards from "./components/body/adWards/Adwards";
 import BestSellingBooks from "./components/body/bestSellingBooks/BestSellingBooks";
 import Biography from "./components/body/bioGraphy/Biography";
 import NewRelease from "./components/body/newRelease/NewRelease";
@@ -26,7 +26,7 @@ export default function Home() {
         <Biography />
       </div>
       <div className={`flex justify-center mt-[160px] w-full h-auto`}>
-        <Adwards />
+        {/* <Adwards /> */}
       </div>
       <div className={`flex justify-center mt-[100px] w-full h-auto mb-[90px]`}>
         <BestSellingBooks />

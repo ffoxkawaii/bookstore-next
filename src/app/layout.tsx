@@ -1,9 +1,12 @@
+// trang này để hiển thị toàn bộ thành phần của trang web
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import CartMenu from "./components/cartMenu/CartMenu";
+// import CartMenu from "./components/cartMenu/CartMenu";
+import BannerPromo from "./components/bannerPromo/bannerPromo";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,7 +39,8 @@ export default function RootLayout({
         bg-[#f2f5f7] w-screen`}
       >
           <Navbar />
-          <CartMenu />
+          {/* <CartMenu /> */}
+          <BannerPromo />
           <main className="relative">{children}</main>
           <Footer />
       </body>

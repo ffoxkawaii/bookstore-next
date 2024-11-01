@@ -67,7 +67,7 @@ const Navbar = () => {
                                     font-semibold
                                     text-[#5f4ecb]`}
                 >
-                  0.00 VNĐ
+                  {/* Giỏ hàng trống! */}
                 </p>
               </div>
               <div>
