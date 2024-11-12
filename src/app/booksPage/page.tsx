@@ -1,7 +1,9 @@
+import path from 'path'
 import { Metadata } from "next";
 import { EB_Garamond } from "next/font/google";
 import { Open_Sans } from "next/font/google";
 import BookPlaceHolder from "../components/body/bestSellingBooks/BookPlaceHolder";
+import { promises as fs } from 'fs';
 
 export const metadata: Metadata = {
   title: "Bookstore | Trang nổi bật",
@@ -18,120 +20,50 @@ const openSans = Open_Sans({
   subsets: ["vietnamese", "latin"],
 });
 
-export default function BookPage() {
-  return (
-    <div className={`flex flex-col justify-center items-center`}>
+interface Book {
+  image: string;
+  type: string;
+  bookName: string;
+  author: string;
+  price: string;
+  originPrice?: string;
+}
+
+export default async function BookPage() {
+  try {
+    // Read JSON file
+    const jsonPath = path.join(process.cwd(), 'src', 'app', 'booksPage', 'lowDB.json');
+    const file = await fs.readFile(jsonPath, 'utf8');
+    const data = JSON.parse(file) as { books: Book[] };
+
+    // Validate data
+    if (!data || !Array.isArray(data.books)) {
+      throw new Error('Invalid data structure');
+    }
+
+    return (
+      <div className={`flex flex-col justify-center items-center`}>
       <div>
-        <p className={`${ebGaramond.className}
-        font-bold text-[40px] my-[50px]`}>Sách</p>
+        <p className={`${ebGaramond.className} font-bold text-[40px] my-[50px]`}>
+        Sách
+        </p>
       </div>
-      <div className={`flex flex-col xl:flex-row xl:gap-x-[100px]`}>
-        <div className={`flex flex-col md:flex-row md:gap-x-[100px]`}>
-          <BookPlaceHolder 
-          image="/books/tat-den.webp"
-          type="Tiểu thuyết"
-          bookName="Tắt đèn" 
-          author="Ngô Tất Tố"
-          price="75.000 VNĐ"
-          />
-          <BookPlaceHolder 
-          image="/books/vo-nhat.webp"
-          type="Truyện ngắn"
-          bookName="Vợ nhặt"
-          author="Kim Lân"
-          originPrice="78.000 VNĐ"
-          price="45.000 VNĐ"
-          />
-        </div>
-        <div className={`flex flex-col md:flex-row md:gap-x-[100px]`}>
-        <BookPlaceHolder 
-          image="/books/chi-pheo.webp"
-          type="Truyện ngắn"
-          bookName="Chí Phèo"
-          author="Nam Cao"
-          price="38.400 VNĐ"
-          />
-          <BookPlaceHolder 
-          image="/books/truyen-kieu.jpg"
-          type="Truyện thơ"
-          bookName="Truyện Kiều"
-          author="Nguyễn Du"
-          price="47.600 VNĐ"
-          />
-        </div>
+      <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10`}>
+        {data.books.map((book, index) => (
+        <BookPlaceHolder
+          key={index}
+          {...book}
+        />
+        ))}
       </div>
-      <div className={`flex flex-col xl:flex-row xl:gap-x-[100px]`}>
-        <div className={`flex flex-col md:flex-row md:gap-x-[100px]`}>
-          <BookPlaceHolder 
-          image="/books/so-do.webp"
-          type="Tiểu thuyết"
-          bookName="Số đỏ"
-          author="Vũ Trọng Phụng"
-          price="55.200 VNĐ"
-          />
-          <BookPlaceHolder 
-          image="/books/canh-dong-bat-tan.jpg"
-          type="Tiểu thuyết"
-          bookName="Cánh đồng bất tận"
-          author="Nguyễn Ngọc Tư"
-          originPrice="69.700 VNĐ"
-          price="63.000 VNĐ"
-          />
-        </div>
-        <div className={`flex flex-col md:flex-row md:gap-x-[100px]`}>
-        <BookPlaceHolder 
-          image="/books/doi-thua.jpg"
-          type="Truyện ngắn"
-          bookName="Đời thừa"
-          author="Nam Cao"
-          originPrice="33.600 VNĐ"
-          price="29.400 VNĐ"
-          />
-          <BookPlaceHolder 
-          image="/books/vang-bong-mot-thoi.webp"
-          type="Truyện ngắn"
-          bookName="Vang bóng một thời"
-          author="Nguyễn Tuân"
-          price="58.000 VNĐ"
-          />
-        </div>
       </div>
-      <div className={`flex flex-col xl:flex-row xl:gap-x-[100px]`}>
-        <div className={`flex flex-col md:flex-row md:gap-x-[100px]`}>
-          <BookPlaceHolder 
-          image="/home/cho-toi-xin-mot-ve-di-tuoi-tho.jpg"
-          type="Truyện ngắn"
-          bookName="Cho tôi xin một vé đi tuổi thơ"
-          author="Nguyễn Nhật Ánh"
-          price="73.800 VNĐ"
-          />
-          <BookPlaceHolder 
-          image="/home/cam-on-nguoi-lon.jpg"
-          type="Truyện dài"
-          bookName="Cảm ơn người lớn"
-          author="Nguyễn Nhật Ánh"
-          price="220.000 VNĐ"
-          />
-        </div>
-        <div className={`flex flex-col md:flex-row md:gap-x-[100px]`}>
-        <BookPlaceHolder 
-          image="/home/toi-la-beto.jpg"
-          type="Truyện ngắn"
-          bookName="Tôi là Bêtô"
-          author="Nguyễn Nhật Ánh"
-          originPrice="67.000 VNĐ"
-          price="65.000 VNĐ"
-          />
-          <BookPlaceHolder 
-          image="/home/toi-thay-hoa-vang-tren-co-xanh.jpg"
-          type="Tiểu thuyết"
-          bookName="Tôi thấy hoa vàng trên cỏ xanh"
-          author="Nguyễn Nhật Ánh"
-          originPrice="93.000 VNĐ"
-          price="81.000 VNĐ"
-          />
-        </div>
+    );
+  } catch (error) {
+    console.error('Error loading books:', error);
+    return (
+      <div className="text-center py-10">
+        <p>Unable to load books. Please try again later.</p>
       </div>
-    </div>
-  );
+    );
+  }
 }
