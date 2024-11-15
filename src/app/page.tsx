@@ -15,7 +15,7 @@ const openSans = Open_Sans({
   subsets: ["vietnamese", "latin"],
 });
 
-export default function Home() {
+export default function HomePage() {
 
   return (
     <div>

@@ -1,16 +1,20 @@
 import Link from "next/link";
+import SearchBar from "./SearchBar";
+import DropdownMenu from "./dropdownMenu";
 
 const NavbarLink = () => {
   return (
     <div
       className={`flex
         felx-row
-        gap-x-[30px]
         justify-center
         items-center
         text-center`}
     >
-      <Link
+      <div className="p-4">
+      <DropdownMenu />
+    </div>
+      {/* <Link
         href="/"
         className={`font-normal text-[18px]
         text-[#62666c]
@@ -34,9 +38,12 @@ const NavbarLink = () => {
         ease-in-out
         hover:font-semibold`}
       >
-        Sách
-      </Link>
-      <Link
+        Cửa hàng
+      </Link> */}
+      <SearchBar />
+
+      {/* chuyển component này thành một phần trong page Cửa hàng */}
+      {/* <Link
         href="/authorsPage"
         className={`font-normal text-[18px]
         text-[#62666c]
@@ -48,8 +55,10 @@ const NavbarLink = () => {
         hover:font-semibold`}
       >
         Tác giả
-      </Link>
-      <Link
+      </Link> */}
+
+      {/* chuyển component này thành một phần trong footer */}
+      {/* <Link
         href="/"
         className={`font-normal text-[18px]
         text-[#62666c]
@@ -74,7 +83,7 @@ const NavbarLink = () => {
         hover:font-semibold`}
       >
         Liên hệ
-      </Link>
+      </Link> */}
     </div>
   );
 }
